@@ -22,7 +22,7 @@ RUN echo "deb http://apt.datadoghq.com/ stable main" > /etc/apt/sources.list.d/d
 # 6. Remove network check
 # 7. Symlink Dogstatsd to allow standalone execution
 RUN mv /etc/dd-agent/datadog.conf.example /etc/dd-agent/datadog.conf \
- && sed -i -e"s/^.*non_local_traffic:.*$/non_local_traffic: yes/" /etc/dd-agent/datadog.conf \
+ && sed -i -e"s/^.*non_local_traffic:.*$/non_local_traffic: no/" /etc/dd-agent/datadog.conf \
  && sed -i -e"s/^.*log_to_syslog:.*$/log_to_syslog: no/" /etc/dd-agent/datadog.conf \
  && sed -i "/user=dd-agent/d" /etc/dd-agent/supervisor.conf \
  && sed -i 's/AGENTUSER="dd-agent"/AGENTUSER="root"/g' /etc/init.d/datadog-agent \
